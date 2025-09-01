@@ -1,38 +1,83 @@
-.App {
+*{
+  padding: 0;
+  margin: 0;
+}
+/* --- Main Preview Container --- */
+.resume-preview {
+  font-family: 'Georgia', serif;
+  color: #222;
+}
+
+/* --- Header Section (Name & Contact) --- */
+.resume-header {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.resume-header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.resume-header p {
+  margin: 5px 0;
+  font-size: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- Reusable Section Title (e.g., "EDUCATION") --- */
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.section-title h3 {
+  text-transform: uppercase;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.section-title hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 5px 0 0 0;
+}
+
+/* --- Main Content Entry (for each job, college, etc.) --- */
+.entry {
+  margin-bottom: 15px;
+}
+
+/* --- Two-Column Layout Magic (for company & date) --- */
+.entry-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.entry-header strong {
+  font-size: 14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.entry-header em { /* Italic text for degree/role */
+  font-size: 12px;
+}
+
+.entry-header span { /* Text for date/location */
+  font-size: 12px;
+}
+
+/* --- Bullet Points for Descriptions --- */
+.bullet-points {
+  padding-left: 20px;
+  margin-top: 5px;
+  color: #444;
+}
+
+/* --- Technical Skills Section --- */
+.skills-section p {
+  font-size: 12px;
+  line-height: 1.5;
 }
