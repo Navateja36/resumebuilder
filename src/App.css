@@ -4,8 +4,14 @@
 }
 /* --- Main Preview Container --- */
 .resume-preview {
-  font-family: 'Georgia', serif;
+  /* ADD THIS LINE to match the PDF font */
+  font-family: 'Times New Roman', Times, serif; 
+  
+  /* The rest of your styles for the preview */
   color: #222;
+  font-size: 10.5pt;
+  line-height: 1.35;
+  padding: 20px 50px 40px 50px; 
 }
 
 /* --- Header Section (Name & Contact) --- */
