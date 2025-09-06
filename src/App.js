@@ -1,9 +1,7 @@
     // this code is for people who wants to select the text from the pdf 
-    import React, { useState, useRef, forwardRef } from 'react';
+    import React, { useState, forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
-    import { Analytics } from '@vercel/analytics/react';
-    import { track } from '@vercel/analytics';
 
     Font.register({
     family: 'Times-Roman',
@@ -444,12 +442,9 @@
             const {name,value}=e.target;
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
-        const handleDownloadClick = async () => {
-            track('Resume Downloaded');
-          };
 
         const DownloadButton = (
-            <div onClick={handleDownloadClick}>
+            
                 <PDFDownloadLink
                 document={<ResumeDocument resumedata={resumedata} />}
                 fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
@@ -474,7 +469,6 @@
                     }
             </PDFDownloadLink>
 
-            </div>
         );
 
         return (
