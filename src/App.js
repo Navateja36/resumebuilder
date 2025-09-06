@@ -2,6 +2,7 @@
     import React, { useState, useRef, forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
+    import { Analytics } from '@vercel/analytics/react';
     import { track } from '@vercel/analytics';
 
     Font.register({
