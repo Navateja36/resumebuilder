@@ -2,6 +2,8 @@
     import React, { useState, useRef, forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
+    import { Analytics } from '@vercel/analytics/react';
+    import { track } from '@vercel/analytics';
 
     Font.register({
     family: 'Times-Roman',
@@ -443,16 +445,7 @@
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
         const handleDownloadClick = async () => {
-            try {
-              // Send a POST request to our API endpoint.
-              // The download will continue even if this fails.
-              await fetch('/api/track-download', {
-                  method: 'POST',
-              });
-              console.log('Download tracked successfully.');
-            } catch (error) {
-              console.error('Failed to track download:', error);
-            }
+            track('Resume Downloaded');
           };
 
         const DownloadButton = (
