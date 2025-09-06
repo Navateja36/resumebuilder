@@ -2,7 +2,6 @@
     import React, { useState, useRef, forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
-    import { Analytics } from '@vercel/analytics/react';
     import { track } from '@vercel/analytics';
 
     Font.register({
@@ -444,9 +443,11 @@
             const {name,value}=e.target;
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
-        const handleDownloadClick = async () => {
+        const handleDownloadClick = () => {
+            // This is the new, correct code. It does NOT use fetch().
             track('Resume Downloaded');
-          };
+            console.log("Tracking event sent to Vercel Analytics.");
+        };
 
         const DownloadButton = (
             <div onClick={handleDownloadClick}>
