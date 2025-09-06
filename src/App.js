@@ -2,8 +2,6 @@
     import React, { useState,  forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
-    import { Analytics } from '@vercel/analytics/react';
-    import { track } from '@vercel/analytics';
 
     Font.register({
     family: 'Times-Roman',
@@ -444,14 +442,9 @@
             const {name,value}=e.target;
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
-        const handleDownloadClick = () => {
-            // This is the new, correct code. It does NOT use fetch().
-            track('Resume Downloaded');
-            console.log("Tracking event sent to Vercel Analytics.");
-        };
 
         const DownloadButton = (
-            <div onClick={handleDownloadClick}>
+            <div>
                 <PDFDownloadLink
                 document={<ResumeDocument resumedata={resumedata} />}
                 fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
@@ -478,7 +471,6 @@
 
             </div>
         );
-        <Analytics/>
 
         return (
             <div style={{ display: 'flex', fontFamily: 'Arial, sans-serif', height: '100vh', backgroundColor: '#e9e9e9', overflow: 'hidden' }}>
