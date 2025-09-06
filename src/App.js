@@ -442,9 +442,22 @@
             const {name,value}=e.target;
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
+        const handleDownloadClick = async () => {
+            try {
+              // Send a POST request to our API endpoint.
+              // The download will continue even if this fails.
+              await fetch('/api/track-download', {
+                  method: 'POST',
+              });
+              console.log('Download tracked successfully.');
+            } catch (error) {
+              console.error('Failed to track download:', error);
+            }
+          };
 
         const DownloadButton = (
-            <PDFDownloadLink
+            <div onClick={handleDownloadClick}>
+                <PDFDownloadLink
                 document={<ResumeDocument resumedata={resumedata} />}
                 fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
                 style={{
@@ -462,11 +475,13 @@
                     boxSizing: 'border-box',
                     marginTop: '10px'
                 }}
-            >
-                {({ loading }) =>
-                    loading ? 'Generating PDF...' : 'Download as PDF'
-                }
+                >
+                    {({ loading }) =>
+                        loading ? 'Generating PDF...' : 'Download as PDF'
+                    }
             </PDFDownloadLink>
+
+            </div>
         );
 
         return (
