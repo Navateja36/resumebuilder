@@ -478,6 +478,7 @@
 
             </div>
         );
+        <Analytics/>
 
         return (
             <div style={{ display: 'flex', fontFamily: 'Arial, sans-serif', height: '100vh', backgroundColor: '#e9e9e9', overflow: 'hidden' }}>
