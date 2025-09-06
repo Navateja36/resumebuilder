@@ -1,5 +1,5 @@
     // this code is for people who wants to select the text from the pdf 
-    import React, { useState, useRef, forwardRef } from 'react';
+    import React, { useState,  forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
     import { Analytics } from '@vercel/analytics/react';
