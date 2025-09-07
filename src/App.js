@@ -2,6 +2,7 @@
     import React, { useState, forwardRef } from 'react';
     import { Page, Text, View, Document, StyleSheet, Font, PDFDownloadLink } from '@react-pdf/renderer';
     import './App.css';
+    import { track } from '@vercel/analytics/react';
 
     Font.register({
     family: 'Times-Roman',
@@ -444,14 +445,9 @@
         }   
 
         const handleDownloadClick = () => {
-            // This line sends a "download" event to your GoatCounter dashboard
-            window.goatcounter.count({
-                path:  'resume-download-click',
-                title: 'Resume Downloaded',
-                event: true,
-            });
-        
-            console.log("Download event sent to GoatCounter.");
+            // This is the new, correct code. It does NOT use GoatCounter.
+            track('Resume Downloaded'); 
+            console.log("Tracking event sent to Vercel Analytics.");
         };
         const DownloadButton = (
             <div onClick={handleDownloadClick}> 
