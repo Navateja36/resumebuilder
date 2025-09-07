@@ -445,7 +445,6 @@
         }   
 
         const handleDownloadClick = () => {
-            // This is the new, correct code. It does NOT use GoatCounter.
             track('Resume Downloaded'); 
             console.log("Tracking event sent to Vercel Analytics.");
         };
