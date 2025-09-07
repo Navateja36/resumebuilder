@@ -454,32 +454,31 @@
             console.log("Download event sent to GoatCounter.");
         };
         const DownloadButton = (
-            <div onClick={handleDownloadClick}>
+            <div onClick={handleDownloadClick}> 
                 <PDFDownloadLink
-                document={<ResumeDocument resumedata={resumedata} />}
-                fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
-                style={{
-                    textDecoration: 'none',
-                    padding: '10px 15px',
-                    color: 'white',
-                    backgroundColor: '#28a745',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    display: 'block',
-                    textAlign: 'center',
-                    fontSize: '16px',
-                    width: '100%',
-                    boxSizing: 'border-box',
-                    marginTop: '10px'
-                }}
+                    document={<ResumeDocument resumedata={resumedata} />}
+                    fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
+                    style={{
+                        textDecoration: 'none',
+                        padding: '10px 15px',
+                        color: 'white',
+                        backgroundColor: '#28a745',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        display: 'block',
+                        textAlign: 'center',
+                        fontSize: '16px',
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        marginTop: '10px'
+                    }}
                 >
                     {({ loading }) =>
                         loading ? 'Generating PDF...' : 'Download as PDF'
                     }
-            </PDFDownloadLink>
-        </div>
-
+                </PDFDownloadLink>
+            </div>
         );
 
         return (
