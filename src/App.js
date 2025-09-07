@@ -444,9 +444,22 @@
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
 
+        // In src/App.js
+
+
+        // ... inside your App() component ...
+
         const handleDownloadClick = () => {
-            track('Resume Downloaded'); 
-            console.log("Tracking event sent to Vercel Analytics.");
+            if (!localStorage.getItem('hasCreatedResume')) {
+                
+                track('Unique User Resume Creation');
+                console.log("New unique user tracked by Vercel Analytics.");
+
+                localStorage.setItem('hasCreatedResume', 'true');
+
+            } else {
+                console.log("Returning user. No new tracking event sent.");
+            }
         };
         const DownloadButton = (
             <div onClick={handleDownloadClick}> 
