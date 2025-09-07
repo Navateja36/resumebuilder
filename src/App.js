@@ -443,7 +443,18 @@
             setResumedata(prevData=>({ ...prevData, [section]:{ ...prevData[section], [name]:value } }));
         }   
 
+        const handleDownloadClick = () => {
+            // This line sends a "download" event to your GoatCounter dashboard
+            window.goatcounter.count({
+                path:  'resume-download-click',
+                title: 'Resume Downloaded',
+                event: true,
+            });
+        
+            console.log("Download event sent to GoatCounter.");
+        };
         const DownloadButton = (
+            <div onClick={handleDownloadClick}>
                 <PDFDownloadLink
                 document={<ResumeDocument resumedata={resumedata} />}
                 fileName={`${resumedata.personalinfo.username || 'resume'}.pdf`}
@@ -467,6 +478,7 @@
                         loading ? 'Generating PDF...' : 'Download as PDF'
                     }
             </PDFDownloadLink>
+        </div>
 
         );
 
